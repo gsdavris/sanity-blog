@@ -11,6 +11,67 @@ export default createSchema({
   // Then proceed to concatenate our document type
   // to the ones provided by any plugins that are installed
   types: schemaTypes.concat([
-    /* Your types here! */
+    {
+      name: 'author',
+      type: 'document',
+      title: 'Author',
+      fields: [
+        {
+          name: 'name',
+          type: 'string',
+          title: 'Name',
+          validation: Rule => Rule.required()
+        },
+        {
+          name: 'avatar',
+          title: 'Avatar',
+          type:'image',          
+          validation: Rule => Rule.required()
+        }
+      ]
+    },
+    {
+      name: 'blog',
+      type: 'document',
+      title: 'Blog',
+      fields: [
+        {
+          name: 'title',
+          type: 'string',
+          title: 'Title',
+          validation: Rule => Rule.required()
+        },
+        {
+          name: 'subtitle',
+          type: 'string',
+          title: 'Subtitle',
+        },
+        {
+          name: 'coverImage',
+          type: 'image',
+          title: 'Cover Image',
+          validation: Rule => Rule.required()
+        },
+        {
+          name: 'date',
+          type: 'datetime',
+          title: 'Date',
+          validation: Rule => Rule.required()
+        },
+        {
+          name: 'author',
+          title: 'Author',
+          type: 'reference',
+          to: [{type: 'author'}],
+          validation: Rule => Rule.required()
+        },
+        {
+          name: 'slug',
+          type: 'slug',
+          title: 'Slug',
+          validation: Rule => Rule.required()
+        }
+      ]
+    }
   ])
 })
