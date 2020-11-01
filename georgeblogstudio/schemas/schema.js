@@ -50,7 +50,49 @@ export default createSchema({
           name: 'coverImage',
           type: 'image',
           title: 'Cover Image',
+          fields:[
+            {
+              name: 'alt',
+              type: 'text',
+              title: 'Description',
+              options: {
+                isHighlighted: true
+              }
+            }
+          ],
           validation: Rule => Rule.required()
+        },
+        {
+          name: 'content',
+          title: 'Content',
+          type: 'array',
+          of: [
+            {
+              type: 'block'
+            },
+            {
+              type: 'image',
+              fields:[
+                {
+                  name: 'alt',
+                  type: 'text',
+                  title: 'Description',
+                  options: {
+                    isHighlighted: true
+                  }
+                }
+              ],
+              options:{
+                hotspot: true
+              }
+            },
+            {
+              type: 'code',
+              options: {
+                withFilename: true
+              }
+            }
+          ]
         },
         {
           name: 'date',
