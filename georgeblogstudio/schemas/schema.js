@@ -50,7 +50,7 @@ export default createSchema({
           name: 'coverImage',
           type: 'image',
           title: 'Cover Image',
-          fields:[
+          fields:[            
             {
               name: 'alt',
               type: 'text',
@@ -60,6 +60,9 @@ export default createSchema({
               }
             }
           ],
+          options:{
+            hotspot: true
+          },
           validation: Rule => Rule.required()
         },
         {
@@ -73,6 +76,20 @@ export default createSchema({
             {
               type: 'image',
               fields:[
+                {
+                  title: 'Position',
+                  name:'position',
+                  type: 'string',
+                  options: {
+                    list: [
+                      {title: 'Center',value: 'center'},                
+                      {title: 'Left',value: 'left'},
+                      {title: 'Right',value: 'right'},                  
+                    ],
+                    layout: 'radio',
+                    isHighlighted: true
+                  }
+                },
                 {
                   name: 'alt',
                   type: 'text',
